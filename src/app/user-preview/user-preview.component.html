@@ -1,0 +1,7 @@
+<div *ngIf="isAuthenticated">
+  <p>User ID: {{ userId }}</p>
+  <p>User Email: {{ userEmail }}</p>
+</div>
+<div *ngIf="!isAuthenticated">
+  <p>User not authenticated.</p>
+</div>

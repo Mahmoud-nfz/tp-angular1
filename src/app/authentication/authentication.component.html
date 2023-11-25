@@ -1,0 +1,28 @@
+<!-- authentication.component.html -->
+
+<form (ngSubmit)="onSubmit()" [formGroup]="authForm">
+    <div class="form-group" [ngClass]="{'has-error': authForm.get('email')?.invalid && authForm.get('email')?.touched}">
+      <label for="email">Email</label>
+      <input type="email" id="email" formControlName="email">
+      <div *ngIf="authForm.get('email')?.hasError('required') && authForm.get('email')?.touched" class="error-message">
+        L'adresse e-mail est requise.
+      </div>
+      <div *ngIf="authForm.get('email')?.hasError('invalidEmail') && authForm.get('email')?.touched" class="error-message">
+        L'adresse e-mail n'est pas valide.
+      </div>
+    </div>
+  
+    <div class="form-group" [ngClass]="{'has-error': authForm.get('password')?.invalid && authForm.get('password')?.touched}">
+      <label for="password">Password</label>
+      <input type="password" id="password" formControlName="password">
+      <div *ngIf="authForm.get('password')?.hasError('required') && authForm.get('password')?.touched" class="error-message">
+        Le mot de passe est requis.
+      </div>
+      <div *ngIf="authForm.get('password')?.hasError('minlength')  && authForm.get('password')?.touched" class="error-message">
+        Le mot de passe doit avoir au moins 4 caractères.
+      </div>
+    </div>
+  
+    <button type="submit" [disabled]="authForm.invalid">Envoyer</button>
+  </form>
+  
